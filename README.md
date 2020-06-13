@@ -1,5 +1,7 @@
 # Police_Brutality_Project
-Building a classifier model based on police killings dataset
+Building a classification model based on police killings dataset
+
+The ultimate goal for this project was to use demographics and shooting data to predict the race of victims of fatal police shootings in the US. A classification model was built to predict whether a victim was white or a person of color (black, latinx).
 
 ## Data
 
@@ -36,6 +38,15 @@ This project is composed of two notebooks: "EDA" and "Classification_Model"
 	-  Merging of datasets
 	-  Creation and addition of new features
 	-  Exploratory data analysis
+-  The EDA performed was done to build a stronger classifier. Therefore, the following question was the focus:
+	- **Are there any trends that make race more predictable for each shooting?** i.e. what makes the police more likely to kill POC?
+- The following trends were determined from EDA, and thus informed feature engineering for the classifier.
+	- Victims with signs of mental illness are disproportionately white.
+	- Victims with an "undetermined" threat level are disproportionately POC.
+	- Victims who are fleeing by foot are disproportionately POC.
+	- Unarmed victims are disproportionately POC.
+	- Victims on Thursdays are disproportionately POC.
+	- Victims are disproportionately POC in the cities with the most police killings.
 
 ### Classification_Model
 - The following tasks were performed in the "Classification_Model" notebook (see the notebook for more detailed explanations):
@@ -45,15 +56,17 @@ This project is composed of two notebooks: "EDA" and "Classification_Model"
 			-  Race (White or POC)
 			-  Gender (M or F)
 			-  Mental illness (Yes or No)
+			-  Armed (armed or unarmed)
+			-  Flee (flee by foot or other)
+			-  Threat level (undetermined or other)
 			-  Body camera (on/off)
 			-  City (Top 30 city or Not)
+			-  City type (City or other)
+				-  e.g. town, village, etc.
 		-  One hot encoding for categorical features:
 			-  Month
 			-  Day of Week
 			-  Region
-			-  What was the victim armed with?
-			-  Threat Level
-			-  How was the victim trying to flee? (by car, by foot, not fleeing, etc.)
 	-  Train-Test Split
 	-  Baseline Modeling
 		-  Logistic Regression
@@ -63,5 +76,15 @@ This project is composed of two notebooks: "EDA" and "Classification_Model"
 		-  AdaBoost
 		-  Gradient Boost
 		-  XGBoost
-	-  Compare baseline models using F1-score
-		- Also look at accuracy, precision, recall
+	-  Compare baseline models using the following metrics/charts:
+		-  accuracy
+		-  precision
+		-  recall
+		-  F1 score
+		-  confusion matrix
+		-  ROC curve
+	-  GridSearch for best two models
+		- Logistic Regression
+		- Random Forest
+	- Evaluate final models and optimize with threshold
+		- **Random Forest performed the best, with an accuracy of 75.9% and F1 score of 75.5%.**
