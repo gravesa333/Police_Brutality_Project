@@ -5,38 +5,46 @@ The ultimate goal for this project was to use demographics and shooting data to 
 
 ## Data
 
-Data was gathered from two sources for this project.  
-
-- Police Killings Dataset from The Washington Post:
-	- Includes every fatal shooting in the US committed by a police officer between 2015 and 2017  
-	- Features:
-		- Was the victim armed?  
-		- How old was the victim?  
-		- What is the gender of the victim?  
-		- What is the race of the victim?  
-		- Where did the shooting take place?  
-		- Did the victim appear to be suffering from mental illness?  
-		- Did the victim appear to be threatening?  
-		- Was the victim trying to flee?  
-		- Did the cop have a body camera?
-- [Census Data](https://data.census.gov/cedsci/)
-	- Data for over 20,000 cities in the US
-	- Features:
-		- Racial demographics
-		- Median household income
-		- Poverty rate
-		- Percent of residents over 25 who have completed high school
+- The data for this project was loaded into a PostgreSQL database called `police_brutality` using the "db_setup.sql" file. The tables in the database are:
+    - `police_killings`
+    - `household_income`
+    - `poverty_level`
+    - `completed_high_school`
+    - `race_distribution`
+- Data was gathered from two sources.  
+	- Police Killings Dataset from The Washington Post:
+		- Includes every fatal shooting in the US committed by a police officer between 2015 and 2017  
+		- Features:
+			- Was the victim armed?  
+			- How old was the victim?  
+			- What is the gender of the victim?  
+			- What is the race of the victim?  
+			- Where did the shooting take place?  
+			- Did the victim appear to be suffering from mental illness?  
+			- Did the victim appear to be threatening?  
+			- Was the victim trying to flee?  
+			- Did the cop have a body camera?
+	- [Census Data](https://data.census.gov/cedsci/)
+		- Data for over 20,000 cities in the US
+		- Features:
+			- Racial demographics
+			- Median household income
+			- Poverty rate
+			- Percent of residents over 25 who have completed high school
 
 ## Notebooks	
-This project is composed of two notebooks: "EDA" and "Classification_Model"
+This project is composed of three notebooks: "SQL_Data_Cleaning", "SQL_EDA", and "Classification_Model"
 
-### EDA
-- The following tasks were performed in the "EDA" notebook (see the notebook for more detailed explanations):
+### SQL_Data_Cleaning
+- The following tasks were performed in the "SQL_Data_Cleaning" notebook (see the notebook for more detailed explanations):
 	-  Data cleaning
 		- Clean strings
 		- Replace null values  
 	-  Merging of datasets
 	-  Creation and addition of new features
+
+### SQL_EDA
+- The following task was performed in the "SQL_EDA" notebook (see the notebook for more detailed explanations):
 	-  Exploratory data analysis
 -  The EDA performed was done to build a stronger classifier. Therefore, the following question was the focus:
 	- **Are there any trends that make race more predictable for each shooting?** i.e. what makes the police more likely to kill POC?
@@ -87,4 +95,4 @@ This project is composed of two notebooks: "EDA" and "Classification_Model"
 		- Logistic Regression
 		- Random Forest
 	- Evaluate final models and optimize with threshold
-		- **Random Forest performed the best, with an accuracy of 75.9% and F1 score of 75.5%.**
+		- **Logistic Regression performed the best, with an accuracy of 77.0% and F1 score of 75.6%.**
